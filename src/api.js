@@ -4,15 +4,15 @@ import NProgress from "nprogress";
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
-    var newurl =
+    var newUrl =
       window.location.protocol +
       "//" +
       window.location.host +
       window.location.pathname;
-    window.history.pushState("", "", newurl);
+    window.history.pushState("", "", newUrl);
   } else {
-    newurl = window.location.protocol + "//" + window.location.host;
-    window.history.pushState("", "", newurl);
+    newUrl = window.location.protocol + "//" + window.location.host;
+    window.history.pushState("", "", newUrl);
   }
 };
 
@@ -32,13 +32,13 @@ const getToken = async (code) => {
 };
 
 const checkToken = async (accessToken) => {
-  const results = await fetch(
+  const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
     .then((res) => res.json())
     .catch((error) => error.json());
 
-  return results;
+  return result;
 };
 
 export const extractLocations = (events) => {
@@ -59,12 +59,12 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url" +
+      "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
     const result = await axios.get(url);
     if (result.data) {
-      let locations = extractLocations(result.data.events);
+      var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
@@ -81,6 +81,7 @@ export const getAccessToken = async () => {
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
+
     if (!code) {
       const results = await axios.get(
         "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
