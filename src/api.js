@@ -1,6 +1,6 @@
 import { mockData } from "./mock-data";
 import axios from "axios";
-import { NProgress } from "nprogress";
+import NProgress from "nprogress";
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
@@ -49,7 +49,7 @@ export const extractLocations = (events) => {
 
 export const getEvents = async () => {
   NProgress.start();
-  if (window.location.href.startsWith("http:localhost")) {
+  if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
   }
