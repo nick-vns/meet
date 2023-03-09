@@ -11,9 +11,12 @@ class Event extends Component {
     return (
       <div className="event">
         <h2 className="summary">{event.summary}</h2>
-        <p className="event-time">
+        <div className="event-time">
           {new Date(event.start.dateTime).toString()}
-        </p>
+        </div>
+        <div className="location">
+          @{event.summary} | {event.location}
+        </div>
         <button className="details-button" onClick={this.handleClickedDetails}>
           {this.state.collapsed === true ? "show details" : "hide details"}
         </button>

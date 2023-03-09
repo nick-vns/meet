@@ -29,6 +29,7 @@ p {
 input[type="text"],
 input[type="number"] {
   padding: 8px 6px 8px 10px;
+  margin: 3px;
   border-radius: 4px;
   outline: none;
   border: 1px solid #ccc;
@@ -36,6 +37,11 @@ input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
+}
+
+input:focus {
+  border: 1px solid #78327b;
+  outline: none;
 }
 
 .city {
@@ -65,7 +71,8 @@ input[type="number"] {
 .suggestions>li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: #6b2856;
+  color: rgb(241, 241, 241);
   cursor: default;
 }
 
@@ -75,26 +82,57 @@ input[type="number"] {
 }
 
 .suggestions>li:hover {
-  background-color: #bcdcdb;
+  background-color: #9a5d86;
+}
+
+.EventList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 50px;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .event {
   padding: 10px 10px 35px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-align: left;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-shadow: 3px 3px 15px rgb(167, 167, 167);
   position: relative;
 }
 
-.details-btn {
+.event .summary {
+  text-shadow: 2px 2px #963d945c;
+}
+
+.event .location {
+  padding-top: 15px;
+  margin-bottom: 60px;
+}
+
+.details-button {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 5px 8px;
+  right: 10px;
+  bottom: 10px;
+  padding: 8px 10px;
   border-radius: 4px;
+  border: none;
   outline: none;
+  background-color: #78327b;
+  color: whitesmoke;
   cursor: pointer;
+  transition: .2s all ease;
+}
+
+.details-button:hover {
+  filter: brightness(1.25);
+  transform: translateY(-5px);
+}
+
+.details-button:active {
+  transform: translateY(-3px);
 }
 
 .name {
@@ -116,7 +154,7 @@ input[type="number"] {
   overflow-x: hidden;
 }
 
-.numberOfEvents {
+.NumberOfEvents {
   width: 200px;
   margin: 20px auto;
   text-align: center;
@@ -206,7 +244,6 @@ input[type="number"] {
   letter-spacing: 0.2px;
   font-family: "Roboto";
 }
-
 
 
 @media only screen and (min-width: 992px) {
