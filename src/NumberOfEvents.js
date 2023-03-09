@@ -10,6 +10,10 @@ class NumberOfEvents extends Component {
     this.setState({ number: value });
   };
 
+  componentDidMount() {
+    this.setState({ number: this.props.numberOfEvents || 32 });
+  }
+
   render() {
     return (
       <div className="NumberOfEvents">

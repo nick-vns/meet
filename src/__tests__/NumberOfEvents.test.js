@@ -20,6 +20,11 @@ describe("<NumberOfEvents /> component", () => {
     expect(NumberOfEventsWrapper.find(".input-label")).toHaveLength(1);
   });
 
+  test("renders input correctly", () => {
+    const number = NumberOfEventsWrapper.state("number");
+    expect(NumberOfEventsWrapper.find(".number").prop("value")).toBe(number);
+  });
+
   test("change state when input changes", () => {
     NumberOfEventsWrapper.setState({ number: 32 });
     const eventObject = { target: { value: 10 } };
