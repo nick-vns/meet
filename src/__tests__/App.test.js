@@ -67,7 +67,9 @@ describe("<App /> integration", () => {
     const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
     await suggestionItems.at(suggestionItems.length - 1).simulate("click");
     const allEvents = await getEvents();
-    expect(AppWrapper.state("events")).toEqual(allEvents);
+    expect(AppWrapper.state("events")).toEqual(
+      allEvents.slice(0, AppWrapper.state("eventCount"))
+    );
     AppWrapper.unmount();
   });
 
@@ -75,7 +77,7 @@ describe("<App /> integration", () => {
     const AppWrapper = mount(<App />);
     const AppEventCountState = AppWrapper.state("eventCount");
     expect(AppEventCountState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().eventCount).toBe(
+    expect(AppWrapper.find(NumberOfEvents).state("eventCount")).toBe(
       AppEventCountState
     );
     AppWrapper.unmount();
@@ -88,20 +90,18 @@ describe("<App /> integration", () => {
     await NumberOfEventsWrapper.find(".number").simulate("change", {
       target: { value: 12 },
     });
-    expect(AppWrapper.state("eventCount")).toBe(20);
+    expect(AppWrapper.state("eventCount")).toBe(12);
     AppWrapper.unmount();
   });
 
   test("get correct data by specifed number", async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    NumberOfEvents.setState({ number: 32 });
-    await NumberOfEventsWrapper.find(".number").simulate("change", {
-      target: { value: 10 },
-    });
-    const allEvents = await getEvents();
-    const eventsToShow = allEvents.slice(0, 10);
-    expect(AppWrapper.state("events")).toEqual(eventsToShow);
+    const EventListWrapper = AppWrapper.find(EventList);
+    const eventObject = { target: { value: 1 } };
+    await NumberOfEventsWrapper.instance().handleNumberInput(eventObject);
+    await getEvents();
+    expect(AppWrapper.state("events")).toHaveLength(1);
     AppWrapper.unmount();
   });
 });

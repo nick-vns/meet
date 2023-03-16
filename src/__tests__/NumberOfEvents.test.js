@@ -9,7 +9,7 @@ describe("<NumberOfEvents /> component", () => {
   });
 
   test("render default number", () => {
-    expect(NumberOfEventsWrapper.state("number")).toBe(50);
+    expect(NumberOfEventsWrapper.state("eventCount")).toBe(50);
   });
 
   test("renders user's input", () => {
@@ -23,6 +23,6 @@ describe("<NumberOfEvents /> component", () => {
   test("change state when input changes", () => {
     const eventObject = { target: { value: 50 } };
     NumberOfEventsWrapper.find(".input-label").simulate("change", eventObject);
-    expect(NumberOfEventsWrapper.state("number")).toBe(50);
+    expect(NumberOfEventsWrapper.state("eventCount")).toBe(50);
   });
 });

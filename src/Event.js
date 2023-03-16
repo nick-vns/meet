@@ -22,11 +22,13 @@ class Event extends Component {
         </button>
         {this.state.collapsed === false && (
           <>
-            <h3 className="about">About</h3>
-            <a href={event.htmlLink} className="link">
-              See details
-            </a>
-            <p className="description">{event.description}</p>
+            <div className="event-details">
+              <h3 className="about">About</h3>
+              <a href={event.htmlLink} className="link">
+                See details
+              </a>
+              <p className="description">{event.description}</p>
+            </div>
           </>
         )}
       </div>
