@@ -88,6 +88,8 @@ input:focus {
 .EventList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
   margin: 50px;
   grid-auto-rows: minmax(100px, auto);
@@ -246,9 +248,19 @@ input:focus {
 }
 
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 720px) {
   .data-vis-wrapper {
     flex-direction: row;
+  }
+
+  @media only screen and (min-width: 500px) {
+    .EventList {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 50px;
+      grid-auto-rows: minmax(50px, auto);
+    }
   }
 
   .data-vis-wrapper .recharts-responsive-container {
