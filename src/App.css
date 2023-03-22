@@ -5,6 +5,12 @@
   padding: 2% 5%;
 }
 
+body {
+  background-color: #ceacd67e;
+  display: flex;
+  justify-content: center;
+}
+
 .App * {
   box-sizing: border-box;
 }
@@ -62,6 +68,7 @@ input:focus {
   position: absolute;
   z-index: 2;
   align-self: center;
+  padding-top: 15px;
   margin: 0;
   top: 43px;
   font-size: 14px;
@@ -87,12 +94,8 @@ input:focus {
 
 .EventList {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  -ms-grid-columns: 1fr;
-  grid-template-columns: 1fr;
   gap: 30px;
   margin: 50px;
-  grid-auto-rows: minmax(100px, auto);
 }
 
 .event {
@@ -102,6 +105,7 @@ input:focus {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 3px 3px 15px rgb(167, 167, 167);
+  border-color: rgba(0, 0, 0, 0.278);
   position: relative;
 }
 
@@ -168,11 +172,6 @@ input:focus {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {
@@ -248,7 +247,7 @@ input:focus {
 }
 
 
-@media only screen and (min-width: 720px) {
+@media only screen and (min-width: 850px) {
   .data-vis-wrapper {
     flex-direction: row;
   }
@@ -256,10 +255,11 @@ input:focus {
   @media only screen and (min-width: 500px) {
     .EventList {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      margin-left: auto;
+      margin-right: auto;
       gap: 30px;
-      margin: 50px;
-      grid-auto-rows: minmax(50px, auto);
+      grid-auto-rows: minmax(20px, auto);
     }
   }
 
