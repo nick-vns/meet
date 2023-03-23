@@ -71,7 +71,8 @@ class App extends Component {
 
   render() {
     if (this.state.showWelcomeScreen === undefined)
-      return <div className="App"></div>;
+      return <div className="App" />;
+
     return (
       <div className="App">
         {!navigator.onLine && (

@@ -2,33 +2,25 @@ import { mockData } from "./mock-data";
 import axios from "axios";
 import NProgress from "nprogress";
 
-const removeQuery = () => {
-  if (window.history.pushState && window.location.pathname) {
-    var newUrl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname;
-    window.history.pushState("", "", newUrl);
-  } else {
-    newUrl = window.location.protocol + "//" + window.location.host;
-    window.history.pushState("", "", newUrl);
-  }
-};
+export const getAccessToken = async () => {
+  const accessToken = localStorage.getItem("access_token");
+  const tokenCheck = accessToken && (await checkToken(accessToken));
 
-const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
-  const { access_token } = await fetch(
-    "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/token" +
-      "/" +
-      encodeCode
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((error) => error);
-  access_token && localStorage.setItem("access_token", access_token);
-  return access_token;
+  if (!accessToken || tokenCheck.error) {
+    await localStorage.removeItem("access_token");
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = await searchParams.get("code");
+
+    if (!code) {
+      const results = await axios.get(
+        "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+      );
+      const { authUrl } = results.data;
+      return (window.location.href = authUrl);
+    }
+    return code && getToken(code);
+  }
+  return accessToken;
 };
 
 export const checkToken = async (accessToken) => {
@@ -39,12 +31,6 @@ export const checkToken = async (accessToken) => {
     .catch((error) => error.json());
 
   return result;
-};
-
-export const extractLocations = (events) => {
-  let extractLocations = events.map((event) => event.location);
-  let locations = [...new Set(extractLocations)];
-  return locations;
 };
 
 export const getEvents = async () => {
@@ -81,23 +67,37 @@ export const getEvents = async () => {
   }
 };
 
-export const getAccessToken = async () => {
-  const accessToken = localStorage.getItem("access_token");
-  const tokenCheck = accessToken && (await checkToken(accessToken));
+export const extractLocations = (events) => {
+  let extractLocations = events.map((event) => event.location);
+  let locations = [...new Set(extractLocations)];
+  return locations;
+};
 
-  if (!accessToken || tokenCheck.error) {
-    await localStorage.removeItem("access_token");
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get("code");
-
-    if (!code) {
-      const results = await axios.get(
-        "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
-      );
-      const { authUrl } = results.data;
-      return (window.location.href = authUrl);
-    }
-    return code && getToken(code);
+const removeQuery = () => {
+  if (window.history.pushState && window.location.pathname) {
+    var newUrl =
+      window.location.protocol +
+      "//" +
+      window.location.host +
+      window.location.pathname;
+    window.history.pushState("", "", newUrl);
+  } else {
+    newUrl = window.location.protocol + "//" + window.location.host;
+    window.history.pushState("", "", newUrl);
   }
-  return accessToken;
+};
+
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const { access_token } = await fetch(
+    "https://r60rvxp7v7.execute-api.us-east-1.amazonaws.com/dev/api/token" +
+      "/" +
+      encodeCode
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((error) => error);
+  access_token && localStorage.setItem("access_token", access_token);
+  return access_token;
 };
