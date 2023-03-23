@@ -10,29 +10,16 @@
 }
 
 body {
-  /* background-color: #ceacd67e; */
+  background-color: #ceacd67e;
   display: flex;
   justify-content: center;
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: url(./img/photo-1519751138087-5bf79df62d5b.jpeg);
+  /* background-image: url(./img/photo-1519751138087-5bf79df62d5b.jpeg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
-
-/* .body-img {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(rgba(255, 239, 213, 0.506),
-      rgba(255, 239, 213, 0.435)),
-    url(./img/photo-1519751138087-5bf79df62d5b.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 ul {
   padding: 0;
