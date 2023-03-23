@@ -31,7 +31,7 @@ const getToken = async (code) => {
   return access_token;
 };
 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -49,6 +49,7 @@ export const extractLocations = (events) => {
 
 export const getEvents = async () => {
   NProgress.start();
+
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
     return mockData;
@@ -69,6 +70,7 @@ export const getEvents = async () => {
       "/" +
       token;
     const result = await axios.get(url);
+
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));

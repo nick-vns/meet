@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import { extractLocations, getEvents } from "./api";
+import { extractLocations, getEvents, checkToken, getAccessToken } from "./api";
+import { WarningAlert } from "./Alert";
+import WelcomeScreen from "./WelcomeScreen";
+import "./App.css";
 import "./nprogress.css";
 
 class App extends Component {
@@ -12,18 +14,26 @@ class App extends Component {
     locations: [],
     eventCount: 50,
     selectedLocation: "all",
+    showWelcomeScreen: undefined,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.eventCount),
-          locations: extractLocations(events),
-        });
-      }
-    });
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.localStorage.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.eventCount),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -48,14 +58,25 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App"></div>;
     return (
       <div className="App">
+        {!navigator.onLine && (
+          <WarningAlert text="No internet connection, events from cached data have been uploaded" />
+        )}
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }
