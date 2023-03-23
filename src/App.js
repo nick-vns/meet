@@ -32,7 +32,7 @@ class App extends Component {
       this.setState({ showWelcomeScreen: false });
     }
 
-    if (!shouldGetEvents) {
+    if (shouldGetEvents) {
       getEvents().then((events) => {
         if (this.mounted) {
           events = events.slice(0, this.state.eventCount);
