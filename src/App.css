@@ -5,15 +5,34 @@
   padding: 2% 5%;
 }
 
-body {
-  background-color: #ceacd67e;
-  display: flex;
-  justify-content: center;
-}
-
 .App * {
   box-sizing: border-box;
 }
+
+body {
+  /* background-color: #ceacd67e; */
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url(./img/photo-1519751138087-5bf79df62d5b.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .body-img {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(255, 239, 213, 0.506),
+      rgba(255, 239, 213, 0.435)),
+    url(./img/photo-1519751138087-5bf79df62d5b.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
 
 ul {
   padding: 0;
@@ -142,21 +161,6 @@ input:focus {
   transform: translateY(-3px);
 }
 
-.name {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.group-name {
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.going,
-.visibility {
-  font-style: italic;
-}
-
 .description {
   overflow-x: hidden;
 }
@@ -189,65 +193,6 @@ input:focus {
 .recharts-surface {
   overflow: visible;
 }
-
-.login-button {
-  color: #494949;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: #ffffff;
-  padding: 20px;
-  border: 4px solid #494949;
-  display: inline-block;
-  transition: all 0.4s ease 0s;
-  min-width: 10rem;
-  margin: 1rem;
-}
-
-.google-btn {
-  width: 184px;
-  height: 42px;
-  margin: 1rem;
-  background-color: #4285f4;
-  border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
-.google-btn:hover {
-  box-shadow: 0 0 6px #4285f4;
-}
-
-.google-btn:active {
-  background: #1669f2;
-}
-
-.google-icon-wrapper {
-  position: absolute;
-  margin-top: 1px;
-  margin-left: 1px;
-  width: 40px;
-  height: 40px;
-  border-radius: 2px;
-  background-color: #fff;
-}
-
-.google-icon {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: -8px;
-  width: 18px;
-  height: 18px;
-}
-
-.btn-text {
-  float: right;
-  margin: 11px 11px 0 0;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-family: "Roboto";
-}
-
-
 
 @media only screen and (min-width: 550px) {
   .EventList {

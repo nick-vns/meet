@@ -61,22 +61,24 @@ class App extends Component {
     if (this.state.showWelcomeScreen === undefined)
       return <div className="App"></div>;
     return (
-      <div className="App">
-        {!navigator.onLine && (
-          <WarningAlert text="No internet connection, events from cached data have been uploaded" />
-        )}
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
-        <EventList events={this.state.events} />
-        <WelcomeScreen
-          showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => {
-            getAccessToken();
-          }}
-        />
+      <div className="body-img">
+        <div className="App">
+          {!navigator.onLine && (
+            <WarningAlert text="No internet connection, events from cached data have been uploaded" />
+          )}
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents updateEvents={this.updateEvents} />
+          <EventList events={this.state.events} />
+          <WelcomeScreen
+            showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => {
+              getAccessToken();
+            }}
+          />
+        </div>
       </div>
     );
   }

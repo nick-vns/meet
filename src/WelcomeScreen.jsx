@@ -1,8 +1,11 @@
 import React from "react";
 import "./WelcomeScreen.css";
+import logo from "./img/logo.png";
+
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
     <div className="WelcomeScreen">
+      <img src={logo} alt="logo meet app" className="logo" />
       <h1>Welcome to the Meet app</h1>
       <h4>
         Log in to see upcoming events around the world for full-stack developers
@@ -22,7 +25,7 @@ o.svg"
               props.getAccessToken();
             }}
             rel="nofollow noopener"
-            class="btn-text"
+            className="btn-text"
           >
             <b>Sign in with google</b>
           </button>
@@ -30,7 +33,8 @@ o.svg"
       </div>
       <a
         href="https://nick-vns.github.io/meet/privacy.html"
-        rel="nofollow noopener"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
       >
         Privacy policy
       </a>
