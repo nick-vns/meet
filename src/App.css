@@ -96,8 +96,7 @@ input:focus {
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(1, 1fr);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 50px auto auto;
 }
 
 .event {
@@ -249,20 +248,22 @@ input:focus {
 }
 
 
+
+@media only screen and (min-width: 550px) {
+  .EventList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 930px) {
+  .EventList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media only screen and (min-width: 850px) {
   .data-vis-wrapper {
     flex-direction: row;
-  }
-
-  @media only screen and (min-width: 500px) {
-    .EventList {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-left: auto;
-      margin-right: auto;
-      gap: 30px;
-      grid-auto-rows: minmax(20px, auto);
-    }
   }
 
   .data-vis-wrapper .recharts-responsive-container {
