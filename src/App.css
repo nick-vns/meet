@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: #ceacd67e;
+  background-color: #f9c5d163;
   display: flex;
   justify-content: center;
 }
@@ -152,6 +152,11 @@ input:focus {
   text-align: center;
 }
 
+h1 {
+  margin-top: 5px;
+  padding-bottom: 15px;
+}
+
 .button-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -164,6 +169,11 @@ input:focus {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+label {
+  text-shadow: 0.7px 0.7px #6b2856;
+  font-size: 18px;
 }
 
 .data-vis-wrapper .recharts-responsive-container {
