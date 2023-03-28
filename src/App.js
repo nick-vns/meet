@@ -107,8 +107,8 @@ class App extends Component {
               margin={{
                 top: 20,
                 right: 20,
-                bottom: 20,
-                left: 20,
+                bottom: 50,
+                left: 0,
               }}
             >
               <CartesianGrid />
@@ -125,12 +125,12 @@ class App extends Component {
           </ResponsiveContainer>
         </div>
         <EventList events={this.state.events} />
-        {/* <WelcomeScreen
+        <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
             getAccessToken();
           }}
-        /> */}
+        />
       </div>
     );
   }
