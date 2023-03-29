@@ -10,7 +10,7 @@ The app would use serverless functions (AWS lambda) for the authorization server
 ## Links
 See the project in [Live Demo](https://nick-vns.github.io/meet/)
 
-##Techstack
+## Techstack
 + React
 + AWS Lamda 
 + Jest
