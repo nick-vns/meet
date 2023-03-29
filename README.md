@@ -7,6 +7,16 @@ The app that has been build using React with test-driven-development (TDD) techn
 ## Serverless functions usage
 The app would use serverless functions (AWS lambda) for the authorization server.
 
+## Links
+See the project in [Live Demo](https://nick-vns.github.io/meet/)
+
+##Techstack
++ React
++ AWS Lamda 
++ Jest
++ Puppeteer 
++ Atatus
+
 ## Key Feature 
 + Filter events by different cities.
 + Module that will allow show and hide details of event.
