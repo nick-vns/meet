@@ -51,6 +51,7 @@ See the project in [Live Demo](https://nick-vns.github.io/meet/)
     
 ## Screenshots 
 ![Sign in page](/signin.png)
+![homepage](/homepage.png)
 
 
 ## User stories and scenarios 
