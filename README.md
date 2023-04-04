@@ -47,6 +47,10 @@ See the project in [Live Demo](https://nick-vns.github.io/meet/)
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
     "workbox-streams": "^6.5.4"
+    
+    
+## Screenshots 
+
 
 ## User stories and scenarios 
 ### Feature 1: Filter events by city
