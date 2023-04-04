@@ -50,8 +50,8 @@ See the project in [Live Demo](https://nick-vns.github.io/meet/)
     
     
 ## Screenshots 
-![Sign in page](.gitignore/signin.png)
-![homepage](.gitignore/homepage.png)
+![Sign in page](public/signin.png)
+![homepage](public/homepage.png)
 
 
 ## User stories and scenarios 
