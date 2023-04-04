@@ -50,7 +50,7 @@ See the project in [Live Demo](https://nick-vns.github.io/meet/)
     
     
 ## Screenshots 
-![Sign in page](./meet/signin.png)
+![Sign in page](meet/signin.png)
 
 
 ## User stories and scenarios 
