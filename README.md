@@ -23,6 +23,31 @@ See the project in [Live Demo](https://nick-vns.github.io/meet/)
 + Filter amout of events that could be displayed.
 + Allow users to navigate in an app offline.
 
+## Dependencies 
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "atatus-spa": "^4.5.0",
+    "axios": "^1.3.4",
+    "nprogress": "^0.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.5.0",
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^6.5.4",
+    "workbox-broadcast-update": "^6.5.4",
+    "workbox-cacheable-response": "^6.5.4",
+    "workbox-core": "^6.5.4",
+    "workbox-expiration": "^6.5.4",
+    "workbox-google-analytics": "^6.5.4",
+    "workbox-navigation-preload": "^6.5.4",
+    "workbox-precaching": "^6.5.4",
+    "workbox-range-requests": "^6.5.4",
+    "workbox-routing": "^6.5.4",
+    "workbox-strategies": "^6.5.4",
+    "workbox-streams": "^6.5.4"
+
 ## User stories and scenarios 
 ### Feature 1: Filter events by city
 User story: As a user I'd like to see events in particular city.
